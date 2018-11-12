@@ -1,0 +1,87 @@
+server:
+  port: 8023
+
+---
+netty:
+  client:
+#   接收数据端口
+    port: 55005
+#   转发目标IP
+    host: 10.10.10.174
+#   转发目标端口
+    targetPort: 55005
+#   登陆目标平台用户名
+    userName: 01234567891234567
+#   登陆目标平台密码
+    password: 01234567890123456789
+    initialDelay: 5
+    period: 5
+    channel:
+      read-timeout: 600
+      write-timeout: 300
+      all-timeout: 0
+  pool:
+    max-total: 5000
+    max-wait: 120
+
+---
+protocol:
+    dataPath: /idea/gb-t-32960-3
+    dataRoot: GB-T-32960-3
+
+---
+# redis数据库（默认为0）
+redis:
+    database: 0
+# Redis服务器地址
+    host: 10.10.10.174
+# Redis服务器连接端口
+    port: 6379
+# Redis服务器连接密码（默认为空）
+    password:
+# 连接池最大连接数（使用负值表示没有限制）
+    maxActive: 8
+# 连接池最大阻塞等待时间（使用负值表示没有限制）
+    maxWait: -1
+# 连接池中的最大空闲连接
+    maxIdle: 8
+# 连接池中的最小空闲连接
+    minIdle: 0
+# 连接超时时间（毫秒）
+    timeout: 0
+
+---
+spring:
+  data:
+    mongodb:
+      uri: mongodb://10.10.10.169:27017/jkpt_bool_test
+
+---
+loginAccount:
+  loginAccountMap:
+    #陕西汉中客车有限公司
+    ShanXiHanZhongCompany:
+      userName: 01234567891234567
+      password: 01234567890123456789
+    #哈尔滨交通集团公共交通有限公司
+    HaiBinJiaoTongCompany:
+      userName: 01234567891234567
+      password: 01234567890123456789
+    #河南炜德客运服务有限公司新乡分公司
+    HeNanWeiDeCompany:
+      userName: 01234567891234567
+      password: 01234567890123456789
+    #德州市公共汽车公司
+    DeZhouGongJiaoCompany:
+      userName: 01234567891234567
+      password: 01234567890123456789
+    #常州市公共交通集团公司
+    ChangZhouGongJiaoCompany:
+      userName: 01234567891234567
+      password: 01234567890123456789
+    #山东乐陵
+    ShanDongLeLinCompany:
+      userName: 01234567891234567
+      password: 01234567890123456789
+
+

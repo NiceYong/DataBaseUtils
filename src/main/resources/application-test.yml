@@ -1,0 +1,101 @@
+server:
+  port: 8023
+
+---
+netty:
+  client:
+#   接收数据端口
+    port: 55005
+#   转发目标IP
+    host: 10.10.10.174
+#   转发目标端口
+    targetPort: 8999
+#   登陆目标平台用户名
+    userName: 01234567891234567
+#   登陆目标平台密码
+    password: 01234567890123456789
+    initialDelay: 5
+    period: 5
+    channel:
+      read-timeout: 600
+      write-timeout: 300
+      all-timeout: 0
+  pool:
+    max-total: 5000
+    max-wait: 120
+
+---
+protocol:
+    dataPath: /idea/gb-t-32960-3
+    dataRoot: GB-T-32960-3
+
+---
+# redis数据库（默认为0）
+redis:
+    database: 0
+# Redis服务器地址
+    host: 10.10.10.33
+# Redis服务器连接端口
+    port: 6389
+# Redis服务器连接密码（默认为空）
+    password:
+# 连接池最大连接数（使用负值表示没有限制）
+    maxActive: 8
+# 连接池最大阻塞等待时间（使用负值表示没有限制）
+    maxWait: -1
+# 连接池中的最大空闲连接
+    maxIdle: 8
+# 连接池中的最小空闲连接
+    minIdle: 0
+# 连接超时时间（毫秒）
+    timeout: 0
+
+---
+
+# 故障redis数据库（默认为0）
+faultRedis:
+    database: 0
+# Redis服务器地址
+    host: 10.10.10.33
+# Redis服务器连接端口
+    port: 6389
+# Redis服务器连接密码（默认为空）
+    password:
+# 连接池最大连接数（使用负值表示没有限制）
+    maxActive: 8
+# 连接池最大阻塞等待时间（使用负值表示没有限制）
+    maxWait: -1
+# 连接池中的最大空闲连接
+    maxIdle: 8
+# 连接池中的最小空闲连接
+    minIdle: 0
+# 连接超时时间（毫秒）
+    timeout: 0
+
+---
+
+kafka:
+#   消费者属性
+    kafkaServers: 10.10.10.221:9092,10.10.10.222:9092,10.10.10.223:9092
+    consumerEnableAutoCommit: false
+    consumerSessionTimeout: 15000
+    consumerAutoCommitInterval: 2000
+    consumerAutoCommitOffsetReset: earliest
+#    consumerAutoCommitOffsetReset: latest
+    consumerGroupId: maxu0705
+    consumerConcurrency: 9
+#   生产者属性
+    producerRetries: 0
+    producerBatchSize: 4096
+    producerLinger: 2
+    producerBufferMemory: 40960
+    producerTopic: xyxtest062901
+
+---
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://10.10.10.33:27017/maxu_test
+
+
